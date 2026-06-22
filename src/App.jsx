@@ -4,7 +4,7 @@ import "../packages/medusae/src/medusae.css";
 
 const config = {
   background: {
-    color: "#050505",
+    color: "#ffffff",
   },
   particles: {
     colorBase: "#0000ff",
