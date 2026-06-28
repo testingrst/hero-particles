@@ -326,6 +326,37 @@ const Particles = ({ config }) => {
 
   const hovering = useRef(true);
   const globalPointer = useRef(null);
+  
+  useEffect(() => {
+  const allowedOrigins = [
+    "​https://rst.software",
+    "​https://www.rst.software",
+    "https://rst-staging.webflow.io",
+  ];
+
+  const handleMessage = (event) => {
+    // Security check: only accept cursor messages from the client's Webflow site
+    if (!allowedOrigins.includes(event.origin)) return;
+
+    const data = event.data;
+
+    if (!data || data.type !== "medusae-pointer") return;
+    if (typeof data.x !== "number" || typeof data.y !== "number") return;
+
+    globalPointer.current = {
+      x: data.x,
+      y: data.y,
+    };
+
+    hovering.current = data.inside !== false;
+  };
+
+  window.addEventListener("message", handleMessage);
+
+  return () => {
+    window.removeEventListener("message", handleMessage);
+  };
+}, []);
 
   useEffect(() => {
     const handleLeave = () => (hovering.current = false);
