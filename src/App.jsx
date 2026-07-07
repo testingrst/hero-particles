@@ -7,10 +7,10 @@ const config = {
     color: "#ffffff",
   },
   particles: {
-    colorBase: "#0000ff",
-    colorOne: "#4285f5",
-    colorTwo: "#eb4236",
-    colorThree: "#faba03",
+    colorBase: "#006DBD",
+    colorOne: "#125E3E",
+    colorTwo: "#61B6EB",
+    colorThree: "#8BE9C1",
   },
   cursor: {
     radius: 0.065,
